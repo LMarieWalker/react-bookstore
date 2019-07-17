@@ -53,7 +53,7 @@ class App extends Component {
   // ADMIN/USER: GET ALL REQUEST <---WORKING
   componentDidMount = async () => {
     try {
-      const res = await fetch('http://localhost:8082/api/books');
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/books`);
       if (!res.ok) throw new Error();
       const booksFromJson = await res.json();
 
