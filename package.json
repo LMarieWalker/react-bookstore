@@ -30,5 +30,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://collective-api-mw.herokuapp.com/api"
+  "proxy": "https://collective-api-mw.herokuapp.com/api/books"
 }
