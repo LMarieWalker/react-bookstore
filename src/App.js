@@ -53,7 +53,7 @@ class App extends Component {
   // ADMIN/USER: GET ALL REQUEST <---WORKING
   componentDidMount = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/books`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/books`);
       if (!res.ok) throw new Error();
       const booksFromJson = await res.json();
 
@@ -73,7 +73,7 @@ class App extends Component {
   // ADMIN: CREAT NEW BOOK <---WORKING (with a slight bug - page needs to be reloaded)
   // TODO need to figure out how to refresh the component to show the new book and clear the form
   createBook = async newBook => {
-    const res = await fetch('http://localhost:8082/api/books', {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/books`, {
       method: 'POST',
       body: JSON.stringify(newBook),
       headers: {
@@ -95,7 +95,7 @@ class App extends Component {
 
   // ADMIN: EDIT BOOK <--- NOT WORKING
   async editBook(book) {
-    const response = await fetch('http://localhost:8082/api/books', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/books`, {
       method: 'PUT',
       body: JSON.stringify(book),
       headers: {
@@ -115,7 +115,7 @@ class App extends Component {
   // ADMIN: DELETE BOOK <---WORKING (with a slight bug - page needs to be reloaded)
   // TODO need to figure out how to refresh the page to clear the deleted book
   deleteBook = id => {
-    fetch(`http://localhost:8082/api/books/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/books/${id}`, {
       method: 'DELETE'
     })
     .then( () => {
@@ -132,7 +132,7 @@ class App extends Component {
 
   // USER ADD BOOK TO CART <---WORKING
   addToCart = id => {
-    fetch(`http://localhost:8082/api/books/cart/add/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/books/cart/add/${id}`, {
       method: 'PATCH'
     })
     .then( () => {
@@ -155,7 +155,7 @@ class App extends Component {
 
   // USER REMOVE BOOK FROM CART <---WORKING
   removeFromCart = id => {
-    fetch(`http://localhost:8082/api/books/cart/remove/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/books/cart/remove/${id}`, {
       method: 'PATCH'
     })
     .then( () => {
