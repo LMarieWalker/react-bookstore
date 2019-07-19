@@ -70,8 +70,7 @@ class App extends Component {
     };
   };
 
-  // ADMIN: CREAT NEW BOOK <---WORKING (with a slight bug - page needs to be reloaded)
-  // TODO need to figure out how to refresh the component to show the new book and clear the form
+  // ADMIN: CREAT NEW BOOK
   createBook = async newBook => {
     const res = await fetch('https://collective-api-mw.herokuapp.com/api/books', {
       method: 'POST',
@@ -81,8 +80,6 @@ class App extends Component {
       }
     })
     const newBookWithId = await res.json();
-    alert('The book was created!');
-    console.log('newBook: ', newBook);
     this.setState(prevState => {
       return {
         books: [
@@ -113,8 +110,7 @@ class App extends Component {
     })
   }
 
-  // ADMIN: DELETE BOOK <---WORKING (with a slight bug - page needs to be reloaded)
-  // TODO need to figure out how to refresh the page to clear the deleted book
+  // ADMIN: DELETE BOOK
   deleteBook = id => {
     fetch(`https://collective-api-mw.herokuapp.com/api/books/${id}`, {
       method: 'DELETE'
@@ -177,10 +173,6 @@ class App extends Component {
       })
     })
   };
-
-
-
-
 
   render() {
 
