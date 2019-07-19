@@ -91,6 +91,7 @@ class App extends Component {
         ]
       }
     })
+    return;
   };
 
   // ADMIN: EDIT BOOK <--- NOT WORKING
@@ -119,10 +120,11 @@ class App extends Component {
       method: 'DELETE'
     })
     .then( () => {
-      alert('The book was deleted. Refresh the page!');
       this.setState(prevState => {
+
         return {
-          ...prevState
+          ...prevState,
+          books: prevState.books.filter( book => book.id !== id)
         }
       })
 

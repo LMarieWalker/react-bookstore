@@ -25,6 +25,23 @@ class AddNewBook extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createBook(this.state);
+    this.resetForm();
+  }
+
+  resetForm = () => {
+    document.getElementById('addBookForm').reset();
+    this.setState({
+      title: '',
+      subtitle: '',
+      author: '',
+      published: '',
+      publisher: '',
+      pages: 0,
+      description: '',
+      website: '',
+      inCart: false,
+      price: 0,
+    })
   }
 
   render () {
@@ -34,7 +51,7 @@ class AddNewBook extends Component {
           <Container fluid>
             <h1>Create New Book</h1>
 
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} id='addBookForm'>
               <Row form>
                 <Col md={6}>
                   <FormGroup>
